@@ -34,13 +34,21 @@ var Scroll = {
     scroll : function () {
         this.scroller = $('#J_runway');
         var totalHeight = CFG.carpetHeight * CFG.carpets;
+        var translateHeight = totalHeight - $(window).height();
         this.scroller.height(totalHeight);
-        this.scroller
-            .css({
-                'transition-duration' : CFG.duration + 's',
-                'transition-timing-function' : CFG.timing,
-                'transform' : 'translateY(-' + (totalHeight - $(window).height()) + 'px)'
-            });
+        this.scroller.css({'transform': 'translateY('+ (-translateHeight) +'px)'});
+
+        setTimeout(function () {
+            Scroll.scroller
+                .css({
+                    'transition-property' : 'all',
+                    'transition-duration' : CFG.duration + 's',
+                    'transition-timing-function' : CFG.timing,
+                    'transform' : 'translateY(0px)'
+                });
+        });
+        
+            console.log(translateHeight);
 
         document.addEventListener('touchmove', function(e) {
             //阻止默认事件

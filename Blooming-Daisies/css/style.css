@@ -18,7 +18,7 @@ body, html {
 
 .runway {
 	height:50000px;
-	transition-property:all;
+	
 	background:url(../img/bg.jpg);
 	position: relative;
 }
